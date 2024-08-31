@@ -11,11 +11,9 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173",  # Your frontend application
-    # Add other origins if needed
+    "http://localhost:5173", 
 ]
 
-# Add CORS middleware to allow requests from specified origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -54,7 +52,7 @@ def process_text_list(text_list):
         variable_list = []
         header_list = []  # Initialize headers with word count
 
-        # Replace both types of smart quotes with straight quotes
+        # Replace both types of quotes with straight quotes
         text = re.sub("‘|’", "'", text)  
         nwords = len(text.split())  #
 
