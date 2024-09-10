@@ -79,7 +79,7 @@ def process_text_list(text_list):
 def run_nrc(text, variable_list, header_list):
     # List of emotions to analyze using NRC
     emotions = ['Anger_NRC', 'Anticipation_NRC', 'Disgust_NRC', 'Fear_NRC', 'Joy_NRC',
-                'Negative_NRC', 'Positive_NRC', 'Sadness_NRC', 'Surprise_NRC', 'Trust_NRC']
+                'Sadness_NRC', 'Surprise_NRC', 'Trust_NRC','Negative_NRC', 'Positive_NRC']
 
     # Calculate frequency of each emotion in the text
     for emotion in emotions:
