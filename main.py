@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from emotion_analysis_nrc import process_text_list
+from vision_api_google import detect_safe_search_uri
 
 app = FastAPI()
 
@@ -36,6 +37,17 @@ async def process_texts(request: Request):
         return JSONResponse(content=json.loads(output_json))
     except ValidationError as e:
         return JSONResponse(status_code=422, content={"detail": e.errors()})
+    
+@app.get("/Explicit-Image-Filter/")
+async def process_image(request: Request):
+    try:
+        data = await request.json()
+        url = data.get("url", "")
+        output_json = detect_safe_search_uri(url)
+        return JSONResponse(content=json.loads(output_json))
+    except ValidationError as e:
+        return JSONResponse(status_code=422, content={"detail": e.errors()})
+
 
 # Test function
 # def test_process_text_list():
